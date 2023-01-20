@@ -1,8 +1,36 @@
 require "test_helper"
+
+Capybara.register_driver :root_headless_chrome do |app|
+  capabilities =
+    Selenium::WebDriver::Remote::Capabilities.chrome(
+      "goog:chromeOptions": {
+        args: [
+          "no-sandbox",
+          "headless",
+          "disable-gpu",
+          "disable-dev-shm-usage",
+          "whitelisted-ips"
+        ]
+      },
+      "goog:loggingPrefs": { browser: "ALL" }
+    )
+
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    capabilities: capabilities
+  )
+end # register driver
+
 require "support/with_clues"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  # driven_by :selenium, using: :chrome, screen_size: [1400, 1400] # this is the default
   include TestSupport::WithClues
   driven_by :rack_test
+end
+
+# Use this as the base class for sytem tests that require
+# JavaScript or that otherwise need a real browser
+class BrowserSystemTestCase < ApplicationSystemTestCase
+  driven_by :root_headless_chrome, screen_size: [ 1400, 1400 ]
 end

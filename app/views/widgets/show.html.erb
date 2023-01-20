@@ -1,6 +1,7 @@
 <%# app/views/widgets/show.html.erb %>
 
-<h1><%= @widget.name %></h1>
+<h1>Widget Information</h1>
+<h2 data-testid="widget-name"><%= @widget.name %></h2>
 <h2>ID #<%= styled_widget_id(@widget.widget_id) %></h2>
 <% if flash[:notice].present? %>
   <aside>
