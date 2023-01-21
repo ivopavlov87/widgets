@@ -1,5 +1,11 @@
 # Widgets - The App For Widgets
 
+## Ivo's Notes
+Due to Apple Silicon, my limited knowledge of Docker, I have ripped changed how the app works.
+Now, you just run `rails s` and you're ready to work natively on port 3000.
+To get back to the Docker setup, change `localhost` to `db` in the `.env.development` and
+`env.test` files.
+
 ## Setup
 
 1. Pull down the app from version control
