@@ -15,7 +15,7 @@ file.
 
 ## Running The App
 
-1. `bin/run`
+1. `bin/run` <- not needed when Docker is ripped out, just use `rails s` (See above)
 
 ## Tests and CI
 
