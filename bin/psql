@@ -4,6 +4,6 @@ set -e
 
 echo "[ bin/psql ] Connecting to widgets_development"
 PGPASSWORD=postgres psql -U postgres \
-                         -h db \
+                         -h localhost \
                          -p 5432 \
                          widgets_development
