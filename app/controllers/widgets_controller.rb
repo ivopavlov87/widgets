@@ -9,7 +9,13 @@ class WidgetsController < ApplicationController
     widget_params = params.require(:widget).permit(
       :name, :price_cents, :manufacturer_id
     )
-
+    
+    if widget_params[:price_cents].present?
+        widget_params[:price_cents] = (
+          BigDecimal(widget_params[:price_cents].to_i * 100).to_i
+        )
+    end
+    
     result = WidgetCreator.new.create_widget(
       Widget.new(widget_params)
     )
