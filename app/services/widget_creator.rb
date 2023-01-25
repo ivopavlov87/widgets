@@ -1,6 +1,6 @@
 class WidgetCreator
   def create_widget(widget)
-    widget.widget_status = WidgetStatus.first
+    widget.widget_status = WidgetStatus.find_by!(name: "Fresh")
     widget.save
 
     Result.new(created: widget.valid?, widget: widget)
