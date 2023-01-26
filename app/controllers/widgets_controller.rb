@@ -12,7 +12,7 @@ class WidgetsController < ApplicationController
     
     if widget_params[:price_cents].present?
         widget_params[:price_cents] = (
-          BigDecimal(widget_params[:price_cents].to_i * 100).to_i
+          (BigDecimal(widget_params[:price_cents]) * 100).to_i
         )
     end
     
