@@ -34,6 +34,9 @@
 # and creates more problems than it solves
 .env
 
+# Procfile.dev is generated, so should not be checked in
+Procfile.dev
+
 # .env.*.local files are where we put actual
 # secrets we need for dev and test, so
 # we really don't want them in version control
