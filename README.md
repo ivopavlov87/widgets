@@ -15,7 +15,23 @@ file.
 
 ## Running The App
 
-1. `bin/run` <- not needed when Docker is ripped out, just use `rails s` (See above)
+1. `bin/run` <- not needed when Docker is ripped out, just use `rails s` (See below)
+
+**Instead**:
+
+### In a terminal tab each:
+
+#### Rails server:
+`rails s` <- this will also make debugging easier
+
+#### Run Redis & Sidekiq
+`brew services start redis` - Will start Redis
+`bin/sidekiq` - Will start Sidekiq (for background jobs)
+
+#### To stop Sidekiq & Redis
+`Ctrl+C` - to exit Sidekiq
+`brew services stop redis` - to stop Redis
+
 
 ## Tests and CI
 
