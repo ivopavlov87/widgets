@@ -26,11 +26,14 @@ file.
 
 #### Run Redis & Sidekiq
 `brew services start redis` - Will start Redis
-`bin/sidekiq` - Will start Sidekiq (for background jobs)
+`redis-server` - alternative to above (not recommended), but will create `dump.rdb` files, discard these
+`redis-cli ping` - test to see if Redis is running, expected output: `PONG`
+`bin/sidekiq` - Will start Sidekiq (for background jobs), will not start without Redis running
 
 #### To stop Sidekiq & Redis
 `Ctrl+C` - to exit Sidekiq
 `brew services stop redis` - to stop Redis
+`redis-cli shutdown` - use if you used `redis-server` to start redis, will create `dump.rdb` files, discard these
 
 
 ## Tests and CI
