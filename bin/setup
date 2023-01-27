@@ -12,6 +12,7 @@ def setup
   # doing a db:migrate
   system! "bin/rails db:reset || bin/rails db:migrate"
 
+  log "Seeding the development database"
   # Seed the data
   system! "bin/rails db:seed"
 
