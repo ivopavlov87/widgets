@@ -7,6 +7,11 @@ class WidgetCreator
       return Result.new(created: false, widget: widget)
     end
 
+    PostWidgetCreationJob.perform_async(widget.id)
+    Result.new(created: widget.valid?, widget: widget)
+  end
+
+  def post_widget_creation_job(widget)
     if widget.price_cents > 7_500_00
       FinanceMailer.high_priced_widget(widget).deliver_now
     end
@@ -15,19 +20,17 @@ class WidgetCreator
       AdminMailer.new_widget_from_new_manufacturer(widget).
         deliver_now
     end
-
-    Result.new(created: widget.valid?, widget: widget)
-  end
-end
-
-class Result
-  attr_reader :widget
-  def initialize(created:, widget:)
-    @created = created
-    @widget = widget
   end
 
-  def created?
-    @created
+  class Result
+    attr_reader :widget
+    def initialize(created:, widget:)
+      @created = created
+      @widget = widget
+    end
+  
+    def created?
+      @created
+    end
   end
 end
