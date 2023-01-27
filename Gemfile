@@ -18,6 +18,9 @@ gem "bundle-audit"
 # traditional one-line-per-event format
 gem "lograge"
 
+# Sidekiq handles background jobs
+gem "sidekiq"
+
 # SASS compiles our CSS, and sassc-rails is maintained
 gem "sassc-rails"
 
@@ -77,6 +80,9 @@ group :development, :test do
   # We use Factory Both in place of fixtures
   # to generate realistic test data
   gem "factory_bot_rails"
+
+  # Foreman runs all processes for local development
+  gem "foreman"
 
   # We use Faker to generate values for attributes
   # in each factor
