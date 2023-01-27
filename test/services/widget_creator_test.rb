@@ -6,6 +6,7 @@ class WidgetCreatorTest < ActiveSupport::TestCase
     @widget_creator = WidgetCreator.new
     @manufacturer = FactoryBot.create(:manufacturer,
                                       created_at: 1.year.ago)
+    FactoryBot.create(:widget_status)
     FactoryBot.create(:widget_status, name: "Fresh")
   end
 
