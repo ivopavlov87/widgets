@@ -36,6 +36,19 @@ file.
 `redis-cli shutdown` - use if you used `redis-server` to start redis, will create `dump.rdb` files, discard these
 
 
+### MailCatcher
+- Do not add MailCatcher to your `Gemfile`, this will cause problems
+- `gem install mailcatcher` as a system gem instead
+- Add this to your `config/development.rb` file:
+```
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = { :address => '127.0.0.1', :port => 1025 }
+config.action_mailer.raise_delivery_errors = false
+```
+
+- See `https://mailcatcher.me/` for more details
+- Start MailCatcher with `mailcatcher`
+
 ## Tests and CI
 
 1. `bin/ci` contains all the tests and checks for the app
