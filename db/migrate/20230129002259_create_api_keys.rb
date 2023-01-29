@@ -27,6 +27,6 @@ class CreateApiKeys < ActiveRecord::Migration[7.0]
 
     add_index :api_keys, :client_name,
               unique: true,
-              whereL "deactivated_at IS NULL"
+              where: "deactivated_at IS NULL"
   end
 end
