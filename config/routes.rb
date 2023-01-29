@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   # add it in the custom routes section, but make
   # sure the resource-based route is here.
   namespace :api do
-    resources :widgets, only: [ :index ]
+    namespace :v1 do
+      resources :widgets, only: [ :index, :show ]
+    end
   end
 
   ####
