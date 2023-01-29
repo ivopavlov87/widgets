@@ -1,6 +1,17 @@
 class ApiController < ApplicationController
-  # skip_before_action :require_login # or whatever callback was
-                                    # set up to require login
-  # http_basic_authenticate_with name: ENV["API_USERNAME"]
-  #                              password: ENV["API_PASSWORD"]
+  before_action :authenticate
+  before_action :require_json
+
+  private
+
+  def authenticate
+    authenticate_or_request_with_http_token do |token, options|
+      ApiKey.find_by(key: token, deactivated_at: nil).present?
+    end
+  end
+  def require_json
+    if !request.format.json?
+      head 406
+    end
+  end
 end
