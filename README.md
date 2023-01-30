@@ -1,5 +1,10 @@
 # Widgets - The App For Widgets
 
+This is the end result of the app that is made using [David Bryant Copeland](https://github.com/davetron5000)'s book: [Sustainable Web Development With Ruby on Rails: Practical Tips for Building Web Applications that Last](https://sustainable-rails.com/).
+
+It is a great book with a lot of useful information, great examples, and is written in a conversational tone that makes getting through technical reading very enjoyable. Please support his work if you find this repo helpful.
+
+
 ## Ivo's Notes
 Due to Apple Silicon, and my limited knowledge of Docker, I have changed how the app works.
 Now, you just run `rails s` and you're ready to work natively on port 3000.
@@ -25,15 +30,15 @@ file.
 `rails s` <- this will also make debugging easier
 
 #### Run Redis & Sidekiq
-`brew services start redis` - Will start Redis
-`redis-server` - alternative to above (not recommended), but will create `dump.rdb` files, discard these
-`redis-cli ping` - test to see if Redis is running, expected output: `PONG`
-`bin/sidekiq` - Will start Sidekiq (for background jobs), will not start without Redis running
+- `brew services start redis` - Will start Redis
+- `redis-server` - alternative to above (not recommended), but will create `dump.rdb` files, discard these
+- `redis-cli ping` - test to see if Redis is running, expected output: `PONG`
+- `bin/sidekiq` - Will start Sidekiq (for background jobs), will not start without Redis running
 
 #### To stop Sidekiq & Redis
-`Ctrl+C` - to exit Sidekiq
-`brew services stop redis` - to stop Redis
-`redis-cli shutdown` - use if you used `redis-server` to start redis, will create `dump.rdb` files, discard these
+- `Ctrl+C` - to exit Sidekiq
+- `brew services stop redis` - to stop Redis
+- `redis-cli shutdown` - use if you used `redis-server` to start redis, will create `dump.rdb` files, discard these
 
 
 ### MailCatcher
