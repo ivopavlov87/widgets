@@ -1,4 +1,7 @@
+require "logging/logs"
+
 class WidgetCreator
+  include Logging::Logs
   def create_widget(widget)
     widget.widget_status = WidgetStatus.find_by!(name: "Fresh")
     widget.save
@@ -7,6 +10,8 @@ class WidgetCreator
       return Result.new(created: false, widget: widget)
     end
 
+
+    log widget, "created"
     HighPricedWidgetCheckJob.perform_async(
         widget.id, widget.price_cents)
     WidgetFromNewManufacturerCheckJob.perform_async(
